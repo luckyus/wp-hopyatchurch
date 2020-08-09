@@ -1,0 +1,66 @@
+/*
+Theme Name: Hop Yat Church
+Theme URI: http://klnc.hopyatchurch.org.hk/
+Author: brian leung
+Author URI: http://wordpress.org/
+Description: Hop Yat Church Kowloon Church
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: translation-ready
+Text Domain: hopyatchurch                                                                                                                                                                                                                                 
+*/
+
+body {
+	/* font-family: 'Noto Sans TC', sans-serif; */
+	font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+	overflow-y: scroll;
+	background-color: #f8f9fa!important;
+}
+
+.my-banner {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
+
+.my-feature-bg {
+	background: rgba(255, 255, 255,0.3);
+	width: 100vw;
+	border-radius: 10px;
+}
+
+.my-feature-text {
+	font-size: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+	.my-feature-bg {
+		width: 60vw;
+	}
+}
+
+div.row > div > div {
+	margin-bottom: 15px;
+}
+
+.my-portrait {
+	width: 120px;
+	float: right;
+	margin-left: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (min-width: 768px) {
+	.my-portrait {
+		width: 150px;
+	}
+}
+
+.my-blog-text {
+	font-size: 1.1rem;
+}
+
+.my-poster > img {
+	width: 100%;
+}
