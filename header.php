@@ -12,13 +12,6 @@
 	<meta charset="<?php bloginfo('charset') ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-
-	<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet"> -->
-	<link rel="stylesheet" href="css/fontawesome/css/all.min.css" />
-	<link rel="stylesheet" href="css/custom.css" />
-
 	<?php wp_head() ?>
 </head>
 
@@ -30,8 +23,8 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div id="navbarNav" class="collapse navbar-collapse justify-content-end">
-					<ul class="navbar-nav">
+
+					<!-- <ul class="navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link" href="index.html">頁首</a>
 						</li>
@@ -47,8 +40,18 @@
 						<li class="nav-item">
 							<a class="nav-link" href="others.html">其他</a>
 						</li>
-					</ul>
-				</div>
+					</ul> -->
+					<?php wp_nav_menu(array(
+    'theme_location' => 'primary',
+    'depth' => 2, // 1 = no dropdowns, 2 = with dropdowns.
+     'container' => 'div',
+    'container_class' => 'collapse navbar-collapse justify-content-end',
+    'container_id' => 'navbarNav',
+    'menu_class' => 'navbar-nav',
+    'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
+    'walker' => new WP_Bootstrap_Navwalker(),
+)); ?>
+
 			</div>
 		</nav>
 		<section class="container-xl px-0 px-md-3">
