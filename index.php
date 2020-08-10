@@ -3,6 +3,7 @@
  * Hop Yat Church main template file
  */
 ?>
+
 <?php get_header() ?>
 
 	<div class="container-xl pb-3">
@@ -24,7 +25,7 @@
 						</div>
 						<div>
 							<p>
-								<img class="my-portrait" src="images/Hui.jpg">
+								<img class="my-portrait" src="<?php echo esc_url(get_template_directory_uri()) ?>/images/Hui.jpg">
 							</p>
 						</div>
 						<div>
@@ -69,10 +70,10 @@
 					</div>
 				</div>
 				<div class="my-poster border rounded-lg">
-					<img src="images/200702 sunday school woman's role.jpg">
+					<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/200702 sunday school woman's role.jpg">
 				</div>
 				<div class="my-poster border rounded-lg">
-					<img src="images/200727 sunday school exodus.jpg">
+					<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/200727 sunday school exodus.jpg">
 				</div>
 				<div class="card">
 					<h5 class="card-header">Featured</h5>

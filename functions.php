@@ -1,6 +1,6 @@
 <?php
 /*
- * Function defination for Hop Yat Church theme (200809)
+ * function defination for Hop Yat Church theme (200809)
  */
 
 ?>
@@ -14,6 +14,8 @@ function hopyatchurch_setup()
 {
     add_theme_support('automatic-feed-links');
     add_theme_support('title-tag');
+
+    // menu ref: https://github.com/wp-bootstrap/wp-bootstrap-navwalker (200809)
     require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
     register_nav_menus(array(
         'primary' => __('Main header menu', 'hopyatchurch'),
