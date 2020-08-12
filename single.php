@@ -1,6 +1,6 @@
 <?php
 /*
- * Hop Yat Church main template file
+ * Hop Yat Church (200813)
  */
 ?>
 
@@ -10,20 +10,14 @@
 		<div class="col-sm-8 order-md-last">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div>
-						<a href="<?php the_permalink() ?>">
-							<h2><?php the_title(); ?></h2>
-						</a>
+						<h2><?php the_title(); ?></h2>
 						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
 						<div class="pb-2">
 							<i class="fas fa-tags"></i>
 							<p class="d-inline"><?php the_tags('Tagged: ', ' ~ ') ?></p>
 						</div>
-						<p><?php the_excerpt() ?></p>
-						<div class="mb-3">
-							<a href="<?php the_permalink() ?>">
-								<?php _e('Read more...') ?>
-							</a>
-						</div>
+						<p><?php the_content() ?></p>
+						<?php wp_link_pages(); ?>
 					</div>
 			<?php endwhile;
 			else :
@@ -39,8 +33,8 @@
 <div class="container-xl pb-3 d-flex">
 	<nav class="ml-auto">
 		<ul class="nav">
-			<li><?php next_posts_link(); ?></li>&nbsp;
-			<li><?php previous_posts_link(); ?></li>
+			<li><?php next_post_link(); ?></li>&nbsp;
+			<li><?php previous_post_link(); ?></li>
 		</ul>
 	</nav>
 </div>

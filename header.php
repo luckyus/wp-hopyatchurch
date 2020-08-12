@@ -42,22 +42,22 @@
 				</ul> -->
 				<!-- https://developer.wordpress.org/reference/functions/wp_nav_menu/ (200810) -->
 				<?php wp_nav_menu(array(
-    'theme_location' => 'primary',
-    'depth' => 2, // 1 = no dropdowns, 2 = with dropdowns.
-     'container' => 'div',
-    'container_class' => 'collapse navbar-collapse justify-content-end',
-    'container_id' => 'navbarNav',
-    'menu_class' => 'navbar-nav',
-    'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
-    'walker' => new WP_Bootstrap_Navwalker(),
-)); ?>
+					'theme_location' => 'primary',
+					'depth' => 2, // 1 = no dropdowns, 2 = with dropdowns.
+					'container' => 'div',
+					'container_class' => 'collapse navbar-collapse justify-content-end',
+					'container_id' => 'navbarNav',
+					'menu_class' => 'navbar-nav',
+					'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
+					'walker' => new WP_Bootstrap_Navwalker(),
+				)); ?>
 			</div>
 		</nav>
 		<section class="container-xl px-0 px-md-3">
 			<div class="position-relative d-flex justify-content-center align-items-center text-center">
-				<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/churchBanner01.jpg" alt="church banner" class="my-banner">
+				<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/churchBanner02.jpg" alt="church banner" class="my-banner">
 				<div class="position-absolute my-feature-bg d-none d-lg-block py-3">
-					<div class="my-feature-text">中華基督教會<br />合一堂九龍堂</div>
+					<div class="my-feature-text"><?php featureText(); ?></div>
 				</div>
 			</div>
 		</section>

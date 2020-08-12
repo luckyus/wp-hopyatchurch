@@ -34,4 +34,22 @@ function hopyatchurch_scripts()
 
 add_action('wp_enqueue_scripts', 'hopyatchurch_scripts');
 
+function new_excerpt_text()
+{
+    return '...';
+}
+
+add_filter('excerpt_more', 'new_excerpt_tet');
+
+function featureText()
+{
+    if (is_front_page()) {
+        _e('中華基督教會<br/>合一堂九龍堂');
+    } elseif (is_home() || is_single()) {
+        _e('中華基督教會<br/>教牧團隊博客');
+    } else {
+        _e('中華基督教會<br/>合一堂九龍堂');
+    }
+}
+
 ?>
