@@ -23,6 +23,20 @@
 			else :
 				_e('Sorry, no posts matched your criteria.', 'textdomain');
 			endif; ?>
+
+			<?php
+			if (comments_open() || get_comments_number()) :
+				comments_template();
+			endif;
+			?>
+
+			<nav class="ml-auto">
+				<ul class="nav">
+					<li><?php next_post_link(); ?></li>&nbsp;
+					<li><?php previous_post_link(); ?></li>
+				</ul>
+			</nav>
+
 		</div>
 		<aside class="col-sm-4 order-md-first">
 			<?php get_sidebar(); ?>
@@ -30,12 +44,4 @@
 	</div>
 </main>
 
-<div class="container-xl pb-3 d-flex">
-	<nav class="ml-auto">
-		<ul class="nav">
-			<li><?php next_post_link(); ?></li>&nbsp;
-			<li><?php previous_post_link(); ?></li>
-		</ul>
-	</nav>
-</div>
 <?php get_footer() ?>
