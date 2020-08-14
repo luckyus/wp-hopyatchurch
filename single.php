@@ -17,7 +17,10 @@
 							<p class="d-inline"><?php the_tags('Tagged: ', ' ~ ') ?></p>
 						</div>
 						<p><?php the_content() ?></p>
-						<?php wp_link_pages(); ?>
+						<?php wp_link_pages(array(
+							'before' => '<div class="d-flex"><p class="post-nav-links ml-auto">' . __('Pages:'),
+							'after' => '</p></div>',
+						)); ?>
 					</div>
 			<?php endwhile;
 			else :
