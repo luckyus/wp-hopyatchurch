@@ -12,7 +12,7 @@ if (post_password_required()) {
 ?>
 <section>
 	<?php if (have_comments()) : ?>
-		<h2 class="py-3">
+		<h3 class="pb-1">
 			<?php
 			$number_of_comments = get_comments_number();
 			if ($number_of_comments === 1) {
@@ -36,16 +36,22 @@ if (post_password_required()) {
 				);
 			}
 			?>
-		</h2>
+		</h3>
 		<ol>
 			<?php
 			wp_list_comments(array(
-				'style' => 'ol',
-				'avatar_size' => 70
+				'style' => '0l'
+				// 'style' => 'ol',
+				// 'avatar_size' => 70
 			))
 			?>
 		</ol>
 	<?php endif ?>
+	<?php
+	the_comments_navigation();
+	if (!comments_open()) : ?>
+		<p><?php esc_html_e('Comments are closed for this post'); ?></p>
+	<?php endif; ?>
 </section>
 <?php
 

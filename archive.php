@@ -1,19 +1,15 @@
 <?php
 /*
- * Hop Yat Church main template file
+ * Hop Yat Church achieve pages template file
  */
 ?>
 
 <?php get_header() ?>
 
 <main class="container-xl pb-3">
-
-	<div class="d-flex">
-		<h6 class="ml-auto">** index.php **</h6>
-	</div>
-
 	<div class="row">
 		<div class="col-sm-8 order-md-last">
+			<?php the_archive_title('<h4>', '<hr/></h4>'); ?>
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div>
 						<a href="<?php the_permalink() ?>">

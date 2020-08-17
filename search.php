@@ -1,17 +1,12 @@
 <?php
 /*
- * Hop Yat Church main template file
+ * Hop Yat Church search results (200817)
  */
 ?>
 
 <?php get_header() ?>
 
 <main class="container-xl pb-3">
-
-	<div class="d-flex">
-		<h6 class="ml-auto">** index.php **</h6>
-	</div>
-
 	<div class="row">
 		<div class="col-sm-8 order-md-last">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -33,7 +28,7 @@
 					</div>
 			<?php endwhile;
 			else :
-				_e('Sorry, no posts matched your criteria.', 'textdomain');
+				_e('Sorry, no matches for:<em>' . get_search_query() . '</em>, please search again!', 'textdomain');
 			endif; ?>
 		</div>
 		<aside class="col-sm-4 order-md-first">

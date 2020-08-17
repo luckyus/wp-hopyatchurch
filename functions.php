@@ -2,7 +2,6 @@
 /*
  * function defination for Hop Yat Church theme (200809)
  */
-
 ?>
 
 <?php
@@ -30,6 +29,10 @@ function hopyatchurch_scripts()
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/css/fontawesome/css/all.min.css');
     wp_enqueue_style('custom', get_template_directory_uri() . '/style.css');
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), null, true);
+
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
 
 add_action('wp_enqueue_scripts', 'hopyatchurch_scripts');
@@ -44,12 +47,35 @@ add_filter('excerpt_more', 'new_excerpt_tet');
 function featureText()
 {
     if (is_front_page()) {
-        _e('中華基督教會<br/>合一堂九龍堂');
-    } elseif (is_home() || is_single()) {
-        _e('中華基督教會<br/>教牧團隊博客');
+        _e('中華基督教會<br/>合一堂九龍堂 (front_page)');
+    } elseif (is_home()) {
+        _e('中華基督教會<br/>教牧團隊博客 (home)');
+    } elseif (is_single()) {
+        _e('中華基督教會<br/>教牧團隊博客 (single)');
+    } elseif (is_search()) {
+        _e('中華基督教會<br/>教牧團隊博客 (search)');
+        _e("<br/>");
+        printf(__('Search results for: %s'), get_search_query());
     } else {
         _e('中華基督教會<br/>合一堂九龍堂');
     }
 }
+
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function arphabet_widgets_init()
+{
+    register_sidebar(array(
+        'name'          => 'Home left sidebar',
+        'id'            => 'home_left_1',
+        'before_widget' => '<div class="pb-3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="font-italic">',
+        'after_title'   => '</h4>',
+    ));
+}
+add_action('widgets_init', 'arphabet_widgets_init');
 
 ?>
