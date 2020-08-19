@@ -14,6 +14,9 @@ function hopyatchurch_setup()
     add_theme_support('automatic-feed-links');
     add_theme_support('title-tag');
 
+    // featured images using post thumbnails (200819)
+    add_theme_support('post-thumbnails');
+
     // menu ref: https://github.com/wp-bootstrap/wp-bootstrap-navwalker (200809)
     require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
     register_nav_menus(array(
@@ -56,6 +59,8 @@ function featureText()
         _e('中華基督教會<br/>教牧團隊博客 (search)');
         _e("<br/>");
         printf(__('Search results for: %s'), get_search_query());
+    } elseif (is_404()) {
+        _e('中華基督教會<br/>教牧團隊博客 (404)');
     } else {
         _e('中華基督教會<br/>合一堂九龍堂');
     }

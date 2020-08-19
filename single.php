@@ -6,6 +6,9 @@
 
 <?php get_header() ?>
 <main class="container-xl pb-3">
+	<div class="d-flex">
+		<h6 class="ml-auto">** single.php **</h6>
+	</div>
 	<div class="row">
 		<div class="col-sm-8 order-md-last">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -15,6 +18,9 @@
 						<div class="pb-2">
 							<i class="fas fa-tags"></i>
 							<p class="d-inline"><?php the_tags('Tagged: ', ' ~ ') ?></p>
+						</div>
+						<div class="my-post-thumbnail">
+							<?php the_post_thumbnail(); ?>
 						</div>
 						<?php
 						the_content();
