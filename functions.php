@@ -22,6 +22,41 @@ function hopyatchurch_setup()
     register_nav_menus(array(
         'primary' => __('Main header menu', 'hopyatchurch'),
     ));
+
+    // custom headers (200821)
+    $args = array(
+        'default-image'      => get_template_directory_uri() . '/images/churchBanner00.jpg',
+        'default-text-color' => '000',
+        'width'              => 1020,
+        'height'             => 150,
+        'flex-width'         => true,
+        'flex-height'        => true,
+    );
+
+    add_theme_support('custom-header', $args);
+
+    register_default_headers(array(
+        'banner01' => array(
+            'url' => get_template_directory_uri() . '/images/churchBanner01.jpg',
+            'thumbnail_url' => get_template_directory_uri() . '/images/churchBanner01.jpg',
+            'description' => __('Banner 01')
+        ),
+        'banner02' => array(
+            'url' => get_template_directory_uri() . '/images/churchBanner02.jpg',
+            'thumbnail_url' => get_template_directory_uri() . '/images/churchBanner02.jpg',
+            'description' => __('Banner 02')
+        ),
+        'banner03' => array(
+            'url' => get_template_directory_uri() . '/images/churchBanner03.jpg',
+            'thumbnail_url' => get_template_directory_uri() . '/images/churchBanner03.jpg',
+            'description' => __('Banner 03')
+        ),
+        'banner04' => array(
+            'url' => get_template_directory_uri() . '/images/churchBanner04.jpg',
+            'thumbnail_url' => get_template_directory_uri() . '/images/churchBanner04.jpg',
+            'description' => __('Banner 04')
+        ),
+    ));
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
@@ -50,7 +85,11 @@ add_filter('excerpt_more', 'new_excerpt_tet');
 function featureText()
 {
     if (is_front_page()) {
-        _e('中華基督教會<br/>合一堂九龍堂 (front_page)');
+        if (get_field('header_text_front_page')) {
+            the_field('header_text_front_page');
+        } else {
+            _e('ACF sucks!');
+        }
     } elseif (is_home()) {
         _e('中華基督教會<br/>教牧團隊博客 (home)');
     } elseif (is_single()) {

@@ -55,7 +55,8 @@
 		</nav>
 		<section class="container-xl px-0 px-md-3">
 			<div class="position-relative d-flex justify-content-center align-items-center text-center">
-				<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/churchBanner02.jpg" alt="church banner" class="my-banner">
+				<!-- <img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/churchBanner02.jpg" alt="church banner" class="my-banner"> -->
+				<img src="<?php header_image(); ?>" class="my-banner">
 				<div class="position-absolute my-feature-bg d-none d-lg-block py-3">
 					<div class="my-feature-text"><?php featureText(); ?></div>
 				</div>
