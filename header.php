@@ -23,23 +23,6 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<!-- <ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">頁首</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="about.html">有關本堂</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="blog.html">教牧同工</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="schedule.html">崇拜主席宣道表</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="others.html">其他</a>
-					</li>
-				</ul> -->
 				<!-- https://developer.wordpress.org/reference/functions/wp_nav_menu/ (200810) -->
 				<?php wp_nav_menu(array(
 					'theme_location' => 'primary',
