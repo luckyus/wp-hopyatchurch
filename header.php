@@ -16,9 +16,9 @@
 </head>
 
 <body <?php body_class('bg-light'); ?>>
-	<header class="pb-3">
+	<header class="pb-4">
 		<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
-			<div class="container-xl px-0 px-xl-3">
+			<div class="container-xl px-0 px-md-2">
 				<span class="navbar-brand mb-0 h1"><?php echo get_bloginfo('name') ?></span>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 					<span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
 				)); ?>
 			</div>
 		</nav>
-		<section class="container-xl px-0 px-md-3">
+		<section class="container-xl px-0 px-md-2">
 			<div class="position-relative d-flex justify-content-center align-items-center text-center">
 				<!-- <img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/churchBanner02.jpg" alt="church banner" class="my-banner"> -->
 				<img src="<?php header_image(); ?>" class="my-banner">

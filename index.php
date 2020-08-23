@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-sm-8 order-md-last">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<div>
+					<div <?php post_class() ?>>
 						<a href="<?php the_permalink() ?>">
 							<h2><?php the_title(); ?></h2>
 						</a>
@@ -34,6 +34,14 @@
 			else :
 				_e('Sorry, no posts matched your criteria.', 'textdomain');
 			endif; ?>
+			<div class="d-flex">
+				<nav class="ml-auto">
+					<ul class="nav">
+						<li><?php next_posts_link(); ?></li>&nbsp;
+						<li><?php previous_posts_link(); ?></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 		<aside class="col-sm-4 order-md-first">
 			<?php get_sidebar(); ?>
@@ -41,12 +49,4 @@
 	</div>
 </main>
 
-<div class="container-xl pb-3 d-flex">
-	<nav class="ml-auto">
-		<ul class="nav">
-			<li><?php next_posts_link(); ?></li>&nbsp;
-			<li><?php previous_posts_link(); ?></li>
-		</ul>
-	</nav>
-</div>
 <?php get_footer() ?>

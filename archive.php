@@ -35,6 +35,14 @@
 			else :
 				_e('Sorry, no posts matched your criteria.', 'textdomain');
 			endif; ?>
+			<div class="d-flex">
+				<nav class="ml-auto">
+					<ul class="nav">
+						<li><?php next_posts_link(); ?></li>&nbsp;
+						<li><?php previous_posts_link(); ?></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 		<aside class="col-sm-4 order-md-first">
 			<?php get_sidebar(); ?>
@@ -42,12 +50,4 @@
 	</div>
 </main>
 
-<div class="container-xl pb-3 d-flex">
-	<nav class="ml-auto">
-		<ul class="nav">
-			<li><?php next_posts_link(); ?></li>&nbsp;
-			<li><?php previous_posts_link(); ?></li>
-		</ul>
-	</nav>
-</div>
 <?php get_footer() ?>

@@ -50,16 +50,27 @@ body {
 
 .my-clearboth {
 	clear: both;
+	margin-bottom: 15x;
+}
+
+.card-body {
+	padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+	.card-body {
+		padding: 1.25rem;
+	}
+}
+
+.wpcf7-form label {
+	width: 100%;
 }
 
 @media screen and (min-width: 768px) {
 	.my-feature-bg {
 		width: 60vw;
 	}
-}
-
-div.row > div > div {
-	margin-bottom: 15px;
 }
 
 .my-portrait {
@@ -81,4 +92,11 @@ div.row > div > div {
 
 .my-poster > img {
 	width: 100%;
+}
+
+.my-sidebar-title {
+	padding: .75rem 0;
+    background-color: rgba(0,0,0,.03);
+ 	border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
 }

@@ -5,15 +5,15 @@
 ?>
 
 <?php get_header() ?>
-<div class="container-xl pb-3">
-	<div class="row mx-md-n2">
+<div class="container-xl pb-3 mt-n1">
+	<div class="row">
 		<div class="col-md-8 px-0 px-md-2 order-md-last">
-			<div class="card">
+			<div class="card mb-3">
 				<h5 class="card-header d-flex justify-content-between">
 					<div>主任牧師的話</div>
 					<div>許開明牧師</div>
 				</h5>
-				<div class="card-body my-blog-text">
+				<div class="card-body">
 					<div class="d-flex justify-content-between align-items-baseline">
 						<h3 class="text-primary font-weight-bold">
 							健康最重要！
@@ -49,7 +49,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="card">
+			<div class="card mb-3">
 				<h5 class="card-header">誠邀弟兄姊妹參與網上主日崇拜</h5>
 				<div class="card-body">
 					<div class="embed-responsive embed-responsive-16by9">
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class="col-md-4 px-0 px-md-2 order-md-first">
-			<div class="card">
+			<div class="card mb-3">
 				<h5 class="card-header">主日祟拜</h5>
 				<div class="card-body">
 					<h5 class="card-title"><?php the_field('service_type') ?></h5>
@@ -71,13 +71,13 @@
 						經文：<?php the_field("service_scripture") ?></p>
 				</div>
 			</div>
-			<div class="my-poster border rounded-lg">
+			<div class="my-poster border rounded-lg mb-3">
 				<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/200702 sunday school woman's role.jpg">
 			</div>
-			<div class="my-poster border rounded-lg">
+			<div class="my-poster border rounded-lg mb-3">
 				<img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/200727 sunday school exodus.jpg">
 			</div>
-			<div class="card">
+			<div class="card mb-3">
 				<h5 class="card-header">Featured</h5>
 				<div class="card-body">
 					<h5 class="card-title"></h5>

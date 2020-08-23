@@ -116,7 +116,7 @@ function arphabet_widgets_init()
         'id'            => 'home_left_1',
         'before_widget' => '<div class="pb-3">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h4 class="font-italic">',
+        'before_title'  => '<h4 class="my-sidebar-title">',
         'after_title'   => '</h4>',
     ));
 }

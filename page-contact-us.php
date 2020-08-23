@@ -5,9 +5,6 @@
 
 get_header();
 ?>
-<div class="container-xl">
-	<h1>Andre Yu Is My Wife!!!</h1>
-</div>
 
 <div class="container-xl pb-3">
 	<div class="row">
@@ -18,7 +15,9 @@ get_header();
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<form class="text-left">
+			<!-- plugin: contact-form-7 (200823) -->
+			<?php echo do_shortcode('[contact-form-7 html_class="text-left" id="121" title="Contact form 1"]') ?>
+			<!-- <form class="text-left">
 				<div class="form-group">
 					<label for="name">Your Name</label>
 					<input type="text" class="form-control" id="name" placeholder="Enter your name...">
@@ -32,7 +31,7 @@ get_header();
 					<textarea id="message" rows="3" class="form-control"></textarea>
 				</div>
 				<button type="submit" class="btn btn-primary">Send message ...</button>
-			</form>
+			</form> -->
 		</div>
 	</div>
 </div>
