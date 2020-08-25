@@ -18,7 +18,7 @@ function hopyatchurch_setup()
     add_theme_support('post-thumbnails');
 
     // menu ref: https://github.com/wp-bootstrap/wp-bootstrap-navwalker (200809)
-    require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+    require_once get_template_directory() . '/class-my-navwalker.php';
     register_nav_menus(array(
         'primary' => __('Main header menu', 'hopyatchurch'),
     ));
@@ -121,5 +121,31 @@ function arphabet_widgets_init()
     ));
 }
 add_action('widgets_init', 'arphabet_widgets_init');
+
+/*
+ * try modify default nav menu (200824)
+ */
+function my_three_level_menu_ul($classes, $args, $depth)
+{
+    if (0 == $depth) $classes[] = "dropdown-menu";
+    $classes[] = 'depth' . $depth;
+    return $classes;
+}
+
+function my_three_level_menu_li($classes, $item, $args, $depth)
+{
+    if (0 == $depth) $classes[] = 'nav-item';
+    if (in_array('current-menu-item', $classes, true) || in_array('current-menu-parent', $classes, true)) {
+        $classes[] = 'active';
+    }
+    if (in_array('menu-item-has-children', $classes, true)) {
+        $classes[] = 'dropdown';
+    }
+    $classes[] = 'depth' . $depth;
+    return $classes;
+}
+
+add_filter('nav_menu_submenu_css_class', 'my_three_level_menu_ul', 10, 3);
+add_filter('nav_menu_css_class', 'my_three_level_menu_li', 10, 4);
 
 ?>

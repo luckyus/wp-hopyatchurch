@@ -26,13 +26,13 @@
 				<!-- https://developer.wordpress.org/reference/functions/wp_nav_menu/ (200810) -->
 				<?php wp_nav_menu(array(
 					'theme_location' => 'primary',
-					'depth' => 2, // 1 = no dropdowns, 2 = with dropdowns.
+					'depth' => 3, // 1 = no dropdowns, 2 = with dropdowns.
 					'container' => 'div',
 					'container_class' => 'collapse navbar-collapse justify-content-end',
 					'container_id' => 'navbarNav',
 					'menu_class' => 'navbar-nav',
-					'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
-					'walker' => new WP_Bootstrap_Navwalker(),
+					'fallback_cb' => 'My_Bootstrap_Navwalker::fallback',
+					'walker' => new My_Bootstrap_Navwalker(),
 				)); ?>
 			</div>
 		</nav>
