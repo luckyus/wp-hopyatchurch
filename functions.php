@@ -123,25 +123,26 @@ function arphabet_widgets_init()
 add_action('widgets_init', 'arphabet_widgets_init');
 
 /*
- * try modify default nav menu (200824)
+ * my hover dropdown 3-level menu (200824)
+ * ref: https://bootstrap-menu.com/detail-multilevel.html (200824)
  */
 function my_three_level_menu_ul($classes, $args, $depth)
 {
-    if (0 == $depth) $classes[] = "dropdown-menu";
+    if (0 === $depth) $classes[] = "dropdown-menu";
+    if (1 === $depth) $classes[] = "submenu submenu-left dropdown-menu";
     $classes[] = 'depth' . $depth;
     return $classes;
 }
 
 function my_three_level_menu_li($classes, $item, $args, $depth)
 {
-    if (0 == $depth) $classes[] = 'nav-item';
+    if (0 === $depth) $classes[] = 'nav-item';
     if (in_array('current-menu-item', $classes, true) || in_array('current-menu-parent', $classes, true)) {
         $classes[] = 'active';
     }
-    if (in_array('menu-item-has-children', $classes, true)) {
+    if (in_array('menu-item-has-children', $classes, true) && (1 !== $depth)) {
         $classes[] = 'dropdown';
     }
-    $classes[] = 'depth' . $depth;
     return $classes;
 }
 

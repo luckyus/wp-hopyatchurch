@@ -36,6 +36,28 @@
 				)); ?>
 			</div>
 		</nav>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(document).on('click', '.dropdown-menu', function(e) {
+					e.stopPropagation();
+					e.preventDefault();
+				});
+
+				// // make it as accordion for smaller screens
+				// if ($(window).width() < 992) {
+				// 	$('.dropdown-menu a').click(function(e) {
+				// 		e.preventDefault();
+				// 		if ($(this).next('.submenu').length) {
+				// 			$(this).next('.submenu').toggle();
+				// 		}
+				// 		$('.dropdown').on('hide.bs.dropdown', function() {
+				// 			$(this).find('.submenu').hide();
+				// 		})
+				// 	});
+				// }
+
+			});
+		</script>
 		<section class="container-xl px-0 px-md-2">
 			<div class="position-relative d-flex justify-content-center align-items-center text-center">
 				<!-- <img src="<?php echo esc_url(get_template_directory_uri()) ?>/images/churchBanner02.jpg" alt="church banner" class="my-banner"> -->

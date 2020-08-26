@@ -72,8 +72,12 @@ if (!class_exists('My_Bootstrap_Navwalker')) :
 
 			/* my additional classes for <a> (200825) */
 			$additional_class = (0 === $depth) ? ' nav-link' : '';
-			if ($this->has_children && 0 === $depth) {
+			if ($this->has_children && (0 === $depth || 1 === $depth)) {
 				$additional_class .= ' dropdown-toggle';
+				$atts['data-toggle'] = "dropdown";
+			}
+			if (1 === $depth || 2 === $depth) {
+				$additional_class .= ' dropdown-item';
 			}
 			$atts['class'] = "depth" . $depth . $additional_class;
 
