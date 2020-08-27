@@ -1,9 +1,47 @@
 <?php
 
-// Check if Class Exists.
+// check if class exists...
 if (!class_exists('My_Bootstrap_Navwalker')) :
 	class My_Bootstrap_Navwalker extends Walker_Nav_Menu
 	{
+		public function start_lvl(&$output, $depth = 0, $args = null)
+		{
+			if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
+				$t = '';
+				$n = '';
+			} else {
+				$t = "\t";
+				$n = "\n";
+			}
+			$indent = str_repeat($t, $depth);
+
+			// Default class.
+			$classes = array('sub-menu');
+
+			/**
+			 * Filters the CSS class(es) applied to a menu list element.
+			 *
+			 * @since 4.8.0
+			 *
+			 * @param string[] $classes Array of the CSS classes that are applied to the menu `<ul>` element.
+			 * @param stdClass $args    An object of `wp_nav_menu()` arguments.
+			 * @param int      $depth   Depth of menu item. Used for padding.
+			 */
+
+			/* my additional classes for <ul> for hover dropdown 3-level menu (200825) */
+			/* ref: https://bootstrap-menu.com/detail-multilevel.html (200824) */
+			if (0 === $depth) $classes[] = "dropdown-menu";
+			if (1 === $depth) $classes[] = "submenu submenu-left dropdown-menu";
+			$classes[] = 'depth' . $depth;
+			/* end my additional classes */
+
+			$class_names = join(' ', apply_filters('nav_menu_submenu_css_class', $classes, $args, $depth));
+			$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+
+			$output .= "{$n}{$indent}<ul$class_names>{$n}";
+		}
+
+
 		public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
 		{
 			if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
@@ -40,6 +78,18 @@ if (!class_exists('My_Bootstrap_Navwalker')) :
 			 * @param stdClass $args    An object of wp_nav_menu() arguments.
 			 * @param int      $depth   Depth of menu item. Used for padding.
 			 */
+
+			/* my additional classes for <li> for hover dropdown 3-level menu (200825) */
+			/* ref: https://bootstrap-menu.com/detail-multilevel.html (200824) */
+			if (0 === $depth) $classes[] = 'nav-item';
+			if (in_array('current-menu-item', $classes, true) || in_array('current-menu-parent', $classes, true)) {
+				$classes[] = 'active';
+			}
+			if (in_array('menu-item-has-children', $classes, true) && (1 !== $depth)) {
+				$classes[] = 'dropdown';
+			}
+			/* end my additional classes */
+
 			$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
 			$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
 
@@ -70,7 +120,8 @@ if (!class_exists('My_Bootstrap_Navwalker')) :
 			$atts['href']         = !empty($item->url) ? $item->url : '';
 			$atts['aria-current'] = $item->current ? 'page' : '';
 
-			/* my additional classes for <a> (200825) */
+			/* my additional classes for <a> for hover dropdown 3-level menu (200825) */
+			/* ref: https://bootstrap-menu.com/detail-multilevel.html (200824) */
 			$additional_class = (0 === $depth) ? ' nav-link' : '';
 			if ($this->has_children && (0 === $depth || 1 === $depth)) {
 				$additional_class .= ' dropdown-toggle';
@@ -79,7 +130,8 @@ if (!class_exists('My_Bootstrap_Navwalker')) :
 			if (1 === $depth || 2 === $depth) {
 				$additional_class .= ' dropdown-item';
 			}
-			$atts['class'] = "depth" . $depth . $additional_class;
+			$atts['class'] = $additional_class;
+			/* end my additional classes */
 
 			/**
 			 * Filters the HTML attributes applied to a menu item's anchor element.

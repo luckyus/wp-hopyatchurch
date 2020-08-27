@@ -17,7 +17,7 @@
 
 <body <?php body_class('bg-light'); ?>>
 	<header class="pb-4">
-		<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+		<nav class="navbar navbar-expand-md bg-light shadow-sm">
 			<div class="container-xl px-0 px-md-2">
 				<span class="navbar-brand mb-0 h1"><?php echo get_bloginfo('name') ?></span>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -40,7 +40,6 @@
 			$(document).ready(function() {
 				$(document).on('click', '.dropdown-menu', function(e) {
 					e.stopPropagation();
-					e.preventDefault();
 				});
 
 				// // make it as accordion for smaller screens
