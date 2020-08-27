@@ -134,7 +134,7 @@ body {
 	display: block;
 }
 
-li.nav-item.active, li.current_page_ancestor {
+li.nav-item.active, li.dropdown.current_page_ancestor {
 	border-top: solid 2px red;
 	margin-top: -2px;
 }
