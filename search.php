@@ -11,7 +11,7 @@
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div>
 						<a href="<?php the_permalink() ?>">
-							<h2><?php the_title(); ?></h2>
+							<h3><?php the_title(); ?></h3>
 						</a>
 						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
 						<div class="pb-2">

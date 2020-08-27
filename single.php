@@ -13,7 +13,7 @@
 		<div class="col-sm-8 order-md-last">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div>
-						<h2><?php the_title(); ?></h2>
+						<h3><?php the_title(); ?></h3>
 						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
 						<div class="pb-2">
 							<i class="fas fa-tags"></i>
