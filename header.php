@@ -20,15 +20,17 @@
 		<nav class="navbar navbar-expand-md bg-light shadow-sm">
 			<div class="container-xl px-0 px-md-2">
 				<span class="navbar-brand mb-0 h1"><?php echo get_bloginfo('name') ?></span>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+
+				<button class="navbar-toggler" type="button" data-toggle="offcanvas">
 					<span class="navbar-toggler-icon"></span>
 				</button>
+
 				<!-- https://developer.wordpress.org/reference/functions/wp_nav_menu/ (200810) -->
 				<?php wp_nav_menu(array(
 					'theme_location' => 'primary',
 					'depth' => 3, // 1 = no dropdowns, 2 = with dropdowns.
 					'container' => 'div',
-					'container_class' => 'collapse navbar-collapse justify-content-end',
+					'container_class' => 'navbar-collapse offcanvas-collapse justify-content-end',
 					'container_id' => 'navbarNav',
 					'menu_class' => 'navbar-nav',
 					'fallback_cb' => 'My_Bootstrap_Navwalker::fallback',
@@ -36,12 +38,18 @@
 				)); ?>
 			</div>
 		</nav>
-		<script type="text/javascript">
-			$(document).ready(function() {
+		<script type="text/javascript" defer>
+			jQuery(document).ready(function($) {
 				$(document).on('click', '.dropdown-menu', function(e) {
 					e.stopPropagation();
 				});
-
+				$('[data-toggle="offcanvas"]').on('click', function() {
+					console.log("clicked!!");
+					$('.offcanvas-collapse').toggleClass('open');
+				})
+			});
+			/*
+			$(document).ready(function() {
 				// // make it as accordion for smaller screens
 				// if ($(window).width() < 992) {
 				// 	$('.dropdown-menu a').click(function(e) {
@@ -55,7 +63,7 @@
 				// 	});
 				// }
 
-			});
+			}); */
 		</script>
 		<section class="container-xl px-0 px-md-2">
 			<div class="position-relative d-flex justify-content-center align-items-center text-center">
