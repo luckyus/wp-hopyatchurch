@@ -6,9 +6,6 @@
 
 <?php get_header() ?>
 <main class="container-xl pb-3">
-	<div class="d-flex">
-		<h6 class="ml-auto">** single.php **</h6>
-	</div>
 	<div class="row">
 		<div class="col-sm-8 order-md-last">
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -17,7 +14,7 @@
 						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
 						<div class="pb-2">
 							<i class="fas fa-tags"></i>
-							<p class="d-inline"><?php the_tags('Tagged: ', ' ~ ') ?></p>
+							<p class="d-inline"><?php the_tags('Tagged: ') ?></p>
 						</div>
 						<div class="my-post-thumbnail">
 							<?php the_post_thumbnail(); ?>
@@ -40,11 +37,11 @@
 				comments_template();
 			endif;
 			?>
-
-			<nav class="ml-auto">
-				<ul class="nav">
-					<li><?php next_post_link(); ?></li>&nbsp;
+			<hr />
+			<nav>
+				<ul class="nav d-flex">
 					<li><?php previous_post_link(); ?></li>
+					<li class="ml-auto my-next-post-link"><?php next_post_link(); ?></li>&nbsp;
 				</ul>
 			</nav>
 

@@ -5,13 +5,11 @@
 ?>
 
 <footer class="container-xl pb-3 px-2">
-	<div class="d-flex justify-content-between align-items-baseline">
+	<div class="d-flex align-items-baseline">
 		<div>
-			<i class="fab fa-facebook-square fa-2x"></i>
-			<i class="fab fa-twitter-square fa-2x"></i>
-			<i class="fab fa-instagram-square fa-2x"></i>
+			<?php bloginfo('name') ?>
 		</div>
-		<p>&copy; Hop Yat Church 2020</p>
+		<p class="ml-auto">&copy; Hop Yat Church 2020</p>
 	</div>
 </footer>
 

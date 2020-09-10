@@ -84,25 +84,28 @@ add_filter('excerpt_more', 'new_excerpt_tet');
 
 function featureText()
 {
-    if (is_front_page()) {
-        if (get_field('header_text_front_page')) {
-            the_field('header_text_front_page');
-        } else {
-            _e('ACF sucks!');
-        }
-    } elseif (is_home()) {
-        _e('中華基督教會<br/>教牧團隊博客 (home)');
-    } elseif (is_single()) {
-        _e('中華基督教會<br/>教牧團隊博客 (single)');
-    } elseif (is_search()) {
-        _e('中華基督教會<br/>教牧團隊博客 (search)');
-        _e("<br/>");
-        printf(__('Search results for: %s'), get_search_query());
-    } elseif (is_404()) {
-        _e('中華基督教會<br/>教牧團隊博客 (404)');
-    } else {
-        _e('中華基督教會<br/>合一堂九龍堂');
-    }
+    global $template;
+    _e("中華基督教會合一堂九龍堂<br/><h5 class='text-monospace'>*** " . basename($template) . "***</h5>");
+
+    // if (is_front_page()) {
+    //     if (get_field('header_text_front_page')) {
+    //         the_field('header_text_front_page');
+    //     } else {
+    //         _e('ACF sucks!');
+    //     }
+    // } elseif (is_home()) {
+    //     _e('中華基督教會<br/>教牧團隊博客 (home)');
+    // } elseif (is_single()) {
+    //     _e('中華基督教會<br/>教牧團隊博客 (single)');
+    // } elseif (is_search()) {
+    //     _e('中華基督教會<br/>教牧團隊博客 (search)');
+    //     _e("<br/>");
+    //     printf(__('Search results for: %s'), get_search_query());
+    // } elseif (is_404()) {
+    //     _e('中華基督教會<br/>教牧團隊博客 (404)');
+    // } else {
+    //     _e('中華基督教會<br/>合一堂九龍堂');
+    // }
 }
 
 /**

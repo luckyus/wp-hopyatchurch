@@ -16,7 +16,7 @@
 						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
 						<div class="pb-2">
 							<i class="fas fa-tags"></i>
-							<p class="d-inline"><?php the_tags('Tagged: ', ' ~ ') ?></p>
+							<p class="d-inline"><?php the_tags('Tagged: ') ?></p>
 						</div>
 						<div class="my-post-thumbnail">
 							<?php the_post_thumbnail(); ?>
@@ -36,8 +36,8 @@
 			<div class="d-flex">
 				<nav class="ml-auto">
 					<ul class="nav">
-						<li><?php next_posts_link(); ?></li>&nbsp;
 						<li><?php previous_posts_link(); ?></li>
+						<li><?php next_posts_link(); ?></li>&nbsp;
 					</ul>
 				</nav>
 			</div>

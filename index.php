@@ -12,12 +12,12 @@
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div <?php post_class() ?>>
 						<a href="<?php the_permalink() ?>">
-							<h3><?php the_title(); ?></h3>
+							<h4><?php the_title(); ?></h4>
 						</a>
 						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
 						<div class="pb-2">
 							<i class="fas fa-tags"></i>
-							<p class="d-inline"><?php the_tags('Tagged: ', ' ~ ') ?></p>
+							<p class="d-inline"><?php the_tags('Tagged: ') ?></p>
 						</div>
 						<div class="my-post-thumbnail">
 							<?php the_post_thumbnail(); ?>
@@ -25,7 +25,7 @@
 						<?php the_excerpt() ?>
 						<div class="mb-3">
 							<a href="<?php the_permalink() ?>">
-								<?php _e('Read more...') ?>
+								<?php _e('閱讀全文。。。') ?>
 							</a>
 						</div>
 						<hr class="my-clearboth" />
@@ -34,14 +34,13 @@
 			else :
 				_e('Sorry, no posts matched your criteria.', 'textdomain');
 			endif; ?>
-			<div class="d-flex">
-				<nav class="ml-auto">
-					<ul class="nav">
-						<li><?php next_posts_link(); ?></li>&nbsp;
-						<li><?php previous_posts_link(); ?></li>
-					</ul>
-				</nav>
-			</div>
+
+			<nav>
+				<ul class="nav d-flex">
+					<li><?php previous_posts_link("« 上一頁"); ?></li>
+					<li class="ml-auto"><?php next_posts_link("下一頁 »"); ?></li>&nbsp;
+				</ul>
+			</nav>
 		</div>
 		<aside class="col-sm-4 order-md-first">
 			<?php get_sidebar(); ?>

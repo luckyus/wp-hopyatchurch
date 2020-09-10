@@ -82,12 +82,14 @@ if (!class_exists('My_Bootstrap_Navwalker')) :
 			/* my additional classes for <li> for hover dropdown 3-level menu (200825) */
 			/* ref: https://bootstrap-menu.com/detail-multilevel.html (200824) */
 			if (0 === $depth) $classes[] = 'nav-item';
-			if (in_array('current-menu-item', $classes, true) || in_array('current-menu-parent', $classes, true)) {
+			if (in_array('current-menu-item', $classes, true) || in_array('current-menu-ancestor', $classes, true) || in_array('current_page_parent', $classes, true)) {
 				$classes[] = 'active';
 			}
 			if (in_array('menu-item-has-children', $classes, true) && (1 !== $depth)) {
 				$classes[] = 'dropdown';
 			}
+			$classes[] = 'depth' . $depth;
+
 			/* end my additional classes */
 
 			$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
@@ -122,7 +124,7 @@ if (!class_exists('My_Bootstrap_Navwalker')) :
 
 			/* my additional classes for <a> for hover dropdown 3-level menu (200825) */
 			/* ref: https://bootstrap-menu.com/detail-multilevel.html (200824) */
-			$additional_class = (0 === $depth) ? ' nav-link' : '';
+			$additional_class = (0 === $depth) ? 'nav-link' : '';
 			if ($this->has_children && (0 === $depth || 1 === $depth)) {
 				$additional_class .= ' dropdown-toggle';
 				$atts['data-toggle'] = "dropdown";
