@@ -111,6 +111,51 @@ body {
 	text-overflow: ellipsis;
 }
 
+.my-post-comments ol {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.my-post-comments ol.children {
+	padding-left: 58px;
+}
+
+.my-post-comments ol li img.avatar {
+	height: 48px;
+	width: 48px;
+	border-radius: 10%;
+	margin-right: 10px;
+}
+
+.my-post-comments .vcard {
+	margin-bottom: 10px;
+}
+
+.my-post-comments .my-comment-date {
+	font-size: 0.8rem;
+}
+
+.my-post-comments .comment-author {
+	display: flex;
+}
+
+.my-post-comments .bullet {
+	color: #c2c6cc;
+}
+
+.my-post-comments .comment-date {
+	font-size: 0.8rem;
+	margin-left: 5px;
+}
+
+.my-post-comments .comment-user-row {
+	padding-bottom: 8px;
+}
+
+.my-post-comments li .comment-respond {
+	padding-left: 58px;
+}
+
 /* hover dropdown menu (200826) */
 .navbar .nav-item:hover .nav-link {
 	background-color: #f1f1f1;

@@ -57,6 +57,9 @@ function hopyatchurch_setup()
             'description' => __('Banner 04')
         ),
     ));
+
+    // user comments walker (change 'says' to '留言') (200912)
+    require_once get_template_directory() . '/class-my-commentwalker.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
@@ -66,10 +69,12 @@ function hopyatchurch_scripts()
     wp_enqueue_style('bootstrap-core', get_template_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/css/fontawesome/css/all.min.css');
     wp_enqueue_style('custom', get_template_directory_uri() . '/style.css');
+
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), null, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
+        // wp_enqueue_script('comment-reply');
+        wp_enqueue_script('my-comment-reply', get_template_directory_uri() . '/js/my-comment-reply.js', null, null, true);
     }
 }
 
@@ -80,7 +85,7 @@ function new_excerpt_text()
     return '...';
 }
 
-add_filter('excerpt_more', 'new_excerpt_tet');
+add_filter('excerpt_more', 'new_excerpt_text');
 
 function featureText()
 {
@@ -124,5 +129,13 @@ function arphabet_widgets_init()
     ));
 }
 add_action('widgets_init', 'arphabet_widgets_init');
+
+// remove the string "Log in to reply" (200917)
+function change_comment_reply_text($link)
+{
+    $link = str_replace('Log in to Reply', '', $link);
+    return $link;
+}
+add_filter('comment_reply_link', 'change_comment_reply_text');
 
 ?>
