@@ -5,8 +5,17 @@
 ?>
 
 <?php get_header() ?>
+
 <div class="container-xl pb-3 mt-n1">
 	<div class="row">
+
+		<?php if (is_active_sidebar('home_main')) : ?>
+			<div id="home-main" class="col-md-8 px-0 px-md-2 order-md-last" role="complementary">
+				<?php dynamic_sidebar('home_main'); ?>
+			</div>
+		<?php endif; ?>
+
+		<!-- 
 		<div class="col-md-8 px-0 px-md-2 order-md-last">
 			<div class="card mb-3">
 				<h5 class="card-header d-flex justify-content-between">
@@ -57,7 +66,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
+
+
 		<div class="col-md-4 px-0 px-md-2 order-md-first">
 			<div class="card mb-3">
 				<h5 class="card-header">主日祟拜</h5>

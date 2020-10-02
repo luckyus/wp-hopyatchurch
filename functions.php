@@ -60,12 +60,15 @@ function hopyatchurch_setup()
 
     // user comments walker (change 'says' to '留言') (200912)
     require_once get_template_directory() . '/class-my-commentwalker.php';
+
+    // widgets (200921)
+    require_once get_template_directory() . '/widgets/paster-wu-latest.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
 
-function hopyatchurch_scripts()
-{
+// scripts & css 
+add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('bootstrap-core', get_template_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/css/fontawesome/css/all.min.css');
     wp_enqueue_style('custom', get_template_directory_uri() . '/style.css');
@@ -76,16 +79,12 @@ function hopyatchurch_scripts()
         // wp_enqueue_script('comment-reply');
         wp_enqueue_script('my-comment-reply', get_template_directory_uri() . '/js/my-comment-reply.js', null, null, true);
     }
-}
+});
 
-add_action('wp_enqueue_scripts', 'hopyatchurch_scripts');
-
-function new_excerpt_text()
-{
+// new_excerpt_text() (xxxxxx)
+add_filter('excerpt_more', function () {
     return '...';
-}
-
-add_filter('excerpt_more', 'new_excerpt_text');
+});
 
 function featureText()
 {
@@ -127,7 +126,20 @@ function arphabet_widgets_init()
         'before_title'  => '<h4 class="my-sidebar-title">',
         'after_title'   => '</h4>',
     ));
+
+    register_sidebar(array(
+        'name'          => 'Home Main',
+        'id'            => 'home_main',
+        'before_widget' => '<div class="card mb-3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="card-header d-flex justify-content-between">',
+        'after_title'   => '</h5>',
+    ));
+
+    // other widgets (200921)
+    register_widget('WP_Widget_Paster_Hui_Latest');
 }
+
 add_action('widgets_init', 'arphabet_widgets_init');
 
 // remove the string "Log in to reply" (200917)
