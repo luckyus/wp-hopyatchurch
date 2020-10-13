@@ -13,16 +13,6 @@ class WP_Widget_Sunday_Service extends WP_Widget
 
 	public function form($instance)
 	{
-		// wp_enqueue_style('datepicker_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css');
-		// wp_enqueue_style('datepicker3_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css');
-		// wp_enqueue_script('datepicker_js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js', null, null, true);
-		// wp_enqueue_script('datepicker_zh_TW_js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-TW.min.js', null, null, true);
-		wp_enqueue_script('jquery-ui-datepicker');
-		wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
-		wp_enqueue_style('jquery-ui');
-		wp_enqueue_script('my-datepicker', get_template_directory_uri() . '/js/my-datepicker.js', null, null, true);
-		wp_enqueue_script('datepicker-zh-TW', get_template_directory_uri() . '/js/datepicker-zh-TW.js', null, null, true);
-
 		$title = !empty($instance['title']) ? $instance['title'] : esc_html__('主日祟拜', 'hopyatchurch');
 		$titleID = esc_attr($this->get_field_id('title'));
 
@@ -57,7 +47,7 @@ class WP_Widget_Sunday_Service extends WP_Widget
 			<label for="<?php echo $date ?>">
 				<?php esc_attr_e('日期:', 'hopyatchurch'); ?>
 			</label>
-			<input class="widefat datepicker123" id="<?php echo $dateID ?>" name="<?php echo esc_attr($this->get_field_name('date')); ?>" type="text" value="<?php echo esc_attr($date); ?>">
+			<input class="widefat datepicker" id="<?php echo $dateID ?>" name="<?php echo esc_attr($this->get_field_name('date')); ?>" type="text" value="<?php echo esc_attr($date); ?>">
 		</p>
 	<?php
 	}
