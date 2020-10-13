@@ -1,6 +1,5 @@
 <?php
 
-
 class WP_Widget_Sunday_Service extends WP_Widget
 {
 	public function __construct()
@@ -14,6 +13,16 @@ class WP_Widget_Sunday_Service extends WP_Widget
 
 	public function form($instance)
 	{
+		// wp_enqueue_style('datepicker_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css');
+		// wp_enqueue_style('datepicker3_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css');
+		// wp_enqueue_script('datepicker_js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js', null, null, true);
+		// wp_enqueue_script('datepicker_zh_TW_js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-TW.min.js', null, null, true);
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
+		wp_enqueue_style('jquery-ui');
+		wp_enqueue_script('my-datepicker', get_template_directory_uri() . '/js/my-datepicker.js', null, null, true);
+		wp_enqueue_script('datepicker-zh-TW', get_template_directory_uri() . '/js/datepicker-zh-TW.js', null, null, true);
+
 		$title = !empty($instance['title']) ? $instance['title'] : esc_html__('主日祟拜', 'hopyatchurch');
 		$titleID = esc_attr($this->get_field_id('title'));
 
@@ -44,22 +53,68 @@ class WP_Widget_Sunday_Service extends WP_Widget
 			</label>
 			<input class="widefat" id="<?php echo $themeID ?>" name="<?php echo esc_attr($this->get_field_name('theme')); ?>" type="text" value="<?php echo esc_attr($theme); ?>">
 		</p>
-<?php
+		<p>
+			<label for="<?php echo $date ?>">
+				<?php esc_attr_e('日期:', 'hopyatchurch'); ?>
+			</label>
+			<input class="widefat datepicker123" id="<?php echo $dateID ?>" name="<?php echo esc_attr($this->get_field_name('date')); ?>" type="text" value="<?php echo esc_attr($date); ?>">
+		</p>
+	<?php
 	}
 
 	public function widget($args, $instance)
 	{
+		$title = !empty($instance['title']) ? $instance['title'] : esc_html__('主日崇拜', 'hopyatchurch');
+		$theme = !empty($instance['theme']) ? $instance['theme'] : esc_html__('崇拜', 'hopyatchurch');
+
 		echo $args['before_widget'];
 
 		echo $args['before_title'];
-		echo '<div>Hello World!</div>';
+		echo $title;
 		echo $args['after_title'];
+
+	?>
+		<div class='card-body'>
+			<h5 class="card-title"><?php echo $theme ?></h5>
+			<p class="card-text">
+				日期：<?php the_field('service_date') ?><br />
+				時間：<?php the_field('service_time') ?>
+				<p>
+					<h5>[ 講 道 ]</h5>
+				</p>
+				題旨：<?php the_field('service_title') ?><br />講員：<?php the_field('service_speaker') ?><br />
+				經文：<?php the_field("service_scripture") ?>
+			</p>
+
+			<div class="input-group date" id="datepicker">
+				<input type="text" class="form-control" value="12-02-2012" />
+				<div class="input-group-addon">
+					<span class="glyphicon glyphicon-th"></span>
+				</div>
+			</div>
+
+			<div>
+				<input data-provide="datepicker">
+			</div>
+
+			<div class="input-group date" data-provide="datepicker">
+				<input type="text" class="form-control">
+				<div class="input-group-addon">
+				</div>
+			</div>
+		</div>
+<?php
 
 		echo $args['after_widget'];
 	}
 
 	public function update($new_instance, $old_instance)
 	{
+		$instance = array();
+		$instance['title'] = (!empty($new_instance['title'])) ? sanitize_text_field($new_instance['title']) : '';
+		$instance['theme'] = (!empty($new_instance['theme'])) ? sanitize_text_field($new_instance['theme']) : '';
+
+		return $instance;
 	}
 }
 
