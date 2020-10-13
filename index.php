@@ -14,18 +14,21 @@
 						<a href="<?php the_permalink() ?>">
 							<h4><?php the_title(); ?></h4>
 						</a>
-						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
-						<div class="pb-2">
+						<div class="text-info mb-3">
+							<h5 class='d-inline'><?php echo get_the_category()[0]->cat_name ?></h5>
+							<h6 class='d-inline'> • <?php the_date("M j, Y"); ?></h6>
+						</div>
+						<!-- <div class="pb-2">
 							<i class="fas fa-tags"></i>
 							<p class="d-inline"><?php the_tags('Tagged: ') ?></p>
-						</div>
+						</div> -->
 						<div class="my-post-thumbnail">
 							<?php the_post_thumbnail(); ?>
 						</div>
 						<?php the_excerpt() ?>
 						<div class="mb-3">
 							<a href="<?php the_permalink() ?>">
-								<?php _e('閱讀全文。。。') ?>
+								<?php _e('閱讀全文...') ?>
 							</a>
 						</div>
 						<hr class="my-clearboth" />

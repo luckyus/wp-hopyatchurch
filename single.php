@@ -11,10 +11,9 @@
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div>
 						<h4><?php the_title(); ?></h4>
-						<p><?php the_date(); ?> by <a href=""><?php the_author() ?></a></p>
-						<div class="pb-2">
-							<i class="fas fa-tags"></i>
-							<p class="d-inline"><?php the_tags('Tagged: ') ?></p>
+						<div class="text-info mb-3">
+							<h5 class='d-inline'><?php echo get_the_category()[0]->cat_name ?></h5>
+							<h6 class='d-inline'> • <?php the_date("M j, Y"); ?></h6>
 						</div>
 						<div class="my-post-thumbnail">
 							<?php the_post_thumbnail(); ?>

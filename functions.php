@@ -62,7 +62,8 @@ function hopyatchurch_setup()
     require_once get_template_directory() . '/class-my-commentwalker.php';
 
     // widgets (200921)
-    require_once get_template_directory() . '/widgets/paster-wu-latest.php';
+    require_once get_template_directory() . '/widgets/latest-blog.php';
+    require_once get_template_directory() . '/widgets/sunday-service.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
@@ -79,6 +80,14 @@ add_action('wp_enqueue_scripts', function () {
         // wp_enqueue_script('comment-reply');
         wp_enqueue_script('my-comment-reply', get_template_directory_uri() . '/js/my-comment-reply.js', null, null, true);
     }
+
+    // datepicker (201011)
+    // wp_register_style('datepicker_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css');
+    wp_enqueue_style('datepicker_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css');
+    wp_enqueue_style('datepicker3_cs', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css');
+    wp_enqueue_script('datepicker_js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js', null, null, true);
+    wp_enqueue_script('datepicker_zh_TW_js', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-TW.min.js', null, null, true);
+    wp_enqueue_script('my-datepicker', get_template_directory_uri() . '/js/my-datepicker.js', null, null, true);
 });
 
 // new_excerpt_text() (xxxxxx)
@@ -119,15 +128,6 @@ function featureText()
 function arphabet_widgets_init()
 {
     register_sidebar(array(
-        'name'          => 'Home left sidebar',
-        'id'            => 'home_left_1',
-        'before_widget' => '<div class="pb-3">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4 class="my-sidebar-title">',
-        'after_title'   => '</h4>',
-    ));
-
-    register_sidebar(array(
         'name'          => 'Home Main',
         'id'            => 'home_main',
         'before_widget' => '<div class="card mb-3">',
@@ -136,8 +136,27 @@ function arphabet_widgets_init()
         'after_title'   => '</h5>',
     ));
 
+    register_sidebar(array(
+        'name'          => 'Home Left Sidebar',
+        'id'            => 'home_left_sidebar',
+        'before_widget' => '<div class="card mb-3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="card-header d-flex justify-content-between">',
+        'after_title'   => '</h5>',
+    ));
+
+    register_sidebar(array(
+        'name'          => 'Blog Left Sidebar',
+        'id'            => 'home_left_1',
+        'before_widget' => '<div class="pb-3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="my-sidebar-title">',
+        'after_title'   => '</h4>',
+    ));
+
     // other widgets (200921)
-    register_widget('WP_Widget_Paster_Hui_Latest');
+    register_widget('WP_Widget_Latest_Blog');
+    register_widget('WP_Widget_Sunday_Service');
 }
 
 add_action('widgets_init', 'arphabet_widgets_init');
@@ -149,5 +168,19 @@ function change_comment_reply_text($link)
     return $link;
 }
 add_filter('comment_reply_link', 'change_comment_reply_text');
+
+function dez_filter_chinese_excerpt($output)
+{
+    global $post;
+
+    //check if its chinese character input
+    $chinese_output = preg_match_all("/\p{Han}+/u", $post->post_content, $matches);
+    if ($chinese_output) {
+        $output = mb_substr($output, 0, 150) . '...';
+    }
+    return $output;
+}
+
+add_filter('get_the_excerpt', 'dez_filter_chinese_excerpt');
 
 ?>
