@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 	$(".datepicker").datepicker({
-		dateFormat: "yy年mm月dd日",
+		dateFormat: "yy 年 mm 月 dd 日",
 		firstDay: 0,
 	});
 });

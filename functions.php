@@ -64,6 +64,7 @@ function hopyatchurch_setup()
     // widgets (200921)
     require_once get_template_directory() . '/widgets/latest-blog.php';
     require_once get_template_directory() . '/widgets/sunday-service.php';
+    require_once get_template_directory() . '/widgets/poster.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
@@ -83,10 +84,9 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_action('admin_enqueue_scripts', function () {
-    // jquery ui datepicker (201013)
+    // jquery ui datepicker for widget 主日崇拜 (201013)
     wp_enqueue_script('jquery-ui-datepicker');
-    wp_register_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
-    wp_enqueue_style('jquery-ui');
+    wp_enqueue_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
     wp_enqueue_script('my-datepicker', get_template_directory_uri() . '/js/my-datepicker.js', null, null, true);
     // wp_enqueue_script('datepicker-zh-TW', get_template_directory_uri() . '/js/datepicker-zh-TW.js', null, null, true);
 });
@@ -158,6 +158,7 @@ function arphabet_widgets_init()
     // other widgets (200921)
     register_widget('WP_Widget_Latest_Blog');
     register_widget('WP_Widget_Sunday_Service');
+    register_widget('WP_Widget_Poster');
 }
 
 add_action('widgets_init', 'arphabet_widgets_init');
