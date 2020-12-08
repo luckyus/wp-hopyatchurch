@@ -65,6 +65,7 @@ function hopyatchurch_setup()
     require_once get_template_directory() . '/widgets/latest-blog.php';
     require_once get_template_directory() . '/widgets/sunday-service.php';
     require_once get_template_directory() . '/widgets/poster.php';
+    require_once get_template_directory() . '/widgets/lucky.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
@@ -158,7 +159,8 @@ function arphabet_widgets_init()
     // other widgets (200921)
     register_widget('WP_Widget_Latest_Blog');
     register_widget('WP_Widget_Sunday_Service');
-    register_widget('WP_Widget_Poster');
+    // register_widget('WP_Widget_Media_Poster');
+    register_widget('WP_Widget_Media_Lucky');
 }
 
 add_action('widgets_init', 'arphabet_widgets_init');

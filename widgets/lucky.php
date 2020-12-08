@@ -1,22 +1,6 @@
 <?php
 
-/**
- * Widget API: WP_Widget_Media_Image class
- *
- * @package WordPress
- * @subpackage Widgets
- * @since 4.8.0
- */
-
-/**
- * Core class that implements an image widget.
- *
- * @since 4.8.0
- *
- * @see WP_Widget_Media
- * @see WP_Widget
- */
-class WP_Widget_Media_Poster extends WP_Widget_Media
+class WP_Widget_Media_Lucky extends \WP_Widget_Media_Image
 {
 
 	/**
@@ -26,31 +10,12 @@ class WP_Widget_Media_Poster extends WP_Widget_Media
 	 */
 	public function __construct()
 	{
-		parent::__construct(
-			'media_poster',
-			__('My Poster'),
-			array(
-				'description' => __('Displays a Poster.'),
-				'mime_type'   => 'image',
-			)
-		);
-
-		$this->l10n = array_merge(
-			$this->l10n,
-			array(
-				'no_media_selected'          => __('No image selected'),
-				'add_media'                  => _x('Add Image', 'label for button in the image widget'),
-				'replace_media'              => _x('Replace Image', 'label for button in the image widget; should preferably not be longer than ~13 characters long'),
-				'edit_media'                 => _x('Edit Image', 'label for button in the image widget; should preferably not be longer than ~13 characters long'),
-				'missing_attachment'         => sprintf(
-					/* translators: %s: URL to media library. */
-					__('We can&#8217;t find that image. Check your <a href="%s">media library</a> and make sure it wasn&#8217;t deleted.'),
-					esc_url(admin_url('upload.php'))
-				),
-				/* translators: %d: Widget count. */
-				'media_library_state_multi'  => _n_noop('Image Widget (%d)', 'Image Widget (%d)'),
-				'media_library_state_single' => __('Image Widget'),
-			)
+		parent::__construct();
+		$this->id_base = 'media_lucky';
+		$this->name = __('My Lucky v1', 'lucky');
+		$this->widget_options = array(
+			'description' => __('Displays Lucky Image'),
+			'mime_type'   => 'image'
 		);
 	}
 
@@ -72,7 +37,7 @@ class WP_Widget_Media_Poster extends WP_Widget_Media
 				'size'              => array(
 					'type'        => 'string',
 					'enum'        => array_merge(get_intermediate_image_sizes(), array('full', 'custom')),
-					'default'     => 'large',
+					'default'     => 'medium',
 					'description' => __('Size'),
 				),
 				'width'             => array( // Via 'customWidth', only when size=custom; otherwise via 'width'.
@@ -156,14 +121,6 @@ class WP_Widget_Media_Poster extends WP_Widget_Media
 					'description'           => __('Image Title Attribute'),
 					'should_preview_update' => false,
 				),
-				'image_details'       => array(
-					'type'                  => 'string',
-					'default'               => '',
-					'sanitize_callback'     => 'sanitize_text_field',
-					'media_prop'            => 'imageDetails',
-					'description'           => __('Image Details'),
-					'should_preview_update' => false,
-				),
 
 				/*
 				 * There are two additional properties exposed by the PostImage modal
@@ -223,9 +180,6 @@ class WP_Widget_Media_Poster extends WP_Widget_Media
 			}
 
 			$size = $instance['size'];
-
-			// debug
-			$size = "large";
 
 			if ('custom' === $size || !in_array($size, array_merge(get_intermediate_image_sizes(), array('full')), true)) {
 				$size  = array($instance['width'], $instance['height']);
@@ -312,17 +266,8 @@ class WP_Widget_Media_Poster extends WP_Widget_Media
 	{
 		parent::enqueue_admin_scripts();
 
-		$handle = 'media-poster-widget';
-		$path_to_JS = '/widgets/media-poster-widget.js';
-
-		// wp_enqueue_script($handle);
-		wp_enqueue_script(
-			$handle,  // Unique ID
-			get_template_directory_uri() . $path_to_JS,  //Filepath
-			array('jquery'), // Dependencies
-			'1.0.0', //Version number
-			true //load in footer
-		);
+		$handle = 'media-image-widget';
+		wp_enqueue_script($handle);
 
 		$exported_schema = array();
 		foreach ($this->get_instance_schema() as $field => $field_schema) {
@@ -359,22 +304,18 @@ class WP_Widget_Media_Poster extends WP_Widget_Media
 	public function render_control_template_scripts()
 	{
 		parent::render_control_template_scripts();
+
 ?>
-		<script type="text/html" id="tmpl-wp-media-widget-poster-fields">
+		<script type="text/html" id="tmpl-wp-media-widget-image-fields">
 			<# var elementIdPrefix='el' + String( Math.random() ) + '_' ; #>
 				<# if ( data.url ) { #>
 					<p class="media-widget-image-link">
 						<label for="{{ elementIdPrefix }}linkUrl"><?php esc_html_e('Link to:'); ?></label>
 						<input id="{{ elementIdPrefix }}linkUrl" type="text" class="widefat link" value="{{ data.link_url }}" placeholder="https://" pattern="((\w+:)?\/\/\w.*|\w+:(?!\/\/$)|\/|\?|#).*">
 					</p>
-					<p>
-						<label for="{{ elementIdPrefix }}imageDetails"><?php esc_html_e('Details:'); ?></label>
-						<input id="{{ elementIdPrefix }}imageDetails" type="text" class="widefat imageDetails" value="{{ data.image_details }}">
-					</p>
-					<p>TP#03</p>
 					<# } #>
 		</script>
-		<script type="text/html" id="tmpl-wp-media-widget-poster-preview">
+		<script type="text/html" id="tmpl-wp-media-widget-image-preview">
 			<# if ( data.error && 'missing_attachment'===data.error ) { #>
 				<div class="notice notice-error notice-alt notice-missing-attachment">
 					<p><?php echo $this->l10n['missing_attachment']; ?></p>

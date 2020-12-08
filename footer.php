@@ -10,6 +10,10 @@
 			<?php bloginfo('name') ?>
 		</div>
 		<p class="ml-auto">&copy; Hop Yat Church 2020</p>
+		<?php
+		$dummy = admin_url('/js/widgets/media-image-widget');
+		echo '<p>$dummy: ' . $dummy . '</p>';
+		?>
 	</div>
 </footer>
 
