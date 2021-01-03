@@ -8,7 +8,7 @@
 
 <div class="container-xl text-center">
     <h3><?php the_title() ?></h3>
-    <h4>Under construction!</h4>
+    <h4>整緊整緊!</h4>
 </div>
 
 <?php if (have_posts()) : while (have_posts()) : the_post();

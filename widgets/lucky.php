@@ -1,8 +1,23 @@
 <?php
 
-class WP_Widget_Media_Lucky extends \WP_Widget_Media_Image
-{
+/**
+ * Widget API: WP_Widget_Media_Image class
+ *
+ * @package WordPress
+ * @subpackage Widgets
+ * @since 4.8.0
+ */
 
+/**
+ * Core class that implements an image widget.
+ *
+ * @since 4.8.0
+ *
+ * @see WP_Widget_Media
+ * @see WP_Widget
+ */
+class WP_Widget_Media_Image extends WP_Widget_Media
+{
 	/**
 	 * Constructor.
 	 *
@@ -10,12 +25,31 @@ class WP_Widget_Media_Lucky extends \WP_Widget_Media_Image
 	 */
 	public function __construct()
 	{
-		parent::__construct();
-		$this->id_base = 'media_lucky';
-		$this->name = __('My Lucky v1', 'lucky');
-		$this->widget_options = array(
-			'description' => __('Displays Lucky Image'),
-			'mime_type'   => 'image'
+		parent::__construct(
+			'media_image',
+			__('LuckyImage'),
+			array(
+				'description' => __('Displays my image.'),
+				'mime_type'   => 'image',
+			)
+		);
+
+		$this->l10n = array_merge(
+			$this->l10n,
+			array(
+				'no_media_selected'          => __('No image selected'),
+				'add_media'                  => _x('Add Image', 'label for button in the image widget'),
+				'replace_media'              => _x('Replace Image', 'label for button in the image widget; should preferably not be longer than ~13 characters long'),
+				'edit_media'                 => _x('Edit Image', 'label for button in the image widget; should preferably not be longer than ~13 characters long'),
+				'missing_attachment'         => sprintf(
+					/* translators: %s: URL to media library. */
+					__('We can&#8217;t find that image. Check your <a href="%s">media library</a> and make sure it wasn&#8217;t deleted.'),
+					esc_url(admin_url('upload.php'))
+				),
+				/* translators: %d: Widget count. */
+				'media_library_state_multi'  => _n_noop('Image Widget (%d)', 'Image Widget (%d)'),
+				'media_library_state_single' => __('Image Widget'),
+			)
 		);
 	}
 

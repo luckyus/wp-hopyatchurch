@@ -9,6 +9,9 @@ if (!isset($content_width)) {
     $content_width = 660;
 }
 
+// Load up a custom image widget class clone
+// include_once __DIR__ . "/lib/custom_image_widget/custom_image_widget.php";
+
 function hopyatchurch_setup()
 {
     add_theme_support('automatic-feed-links');
@@ -64,8 +67,8 @@ function hopyatchurch_setup()
     // widgets (200921)
     require_once get_template_directory() . '/widgets/latest-blog.php';
     require_once get_template_directory() . '/widgets/sunday-service.php';
-    require_once get_template_directory() . '/widgets/poster.php';
-    require_once get_template_directory() . '/widgets/lucky.php';
+    // require_once get_template_directory() . '/widgets/poster.php';
+    // require_once get_template_directory() . '/widgets/lucky.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');
@@ -156,11 +159,21 @@ function arphabet_widgets_init()
         'after_title'   => '</h4>',
     ));
 
+    register_sidebar(array(
+        'name'          => '庶務部 Sidebar',
+        'id'            => 'maintenance_left_sidebar',
+        'before_widget' => '<div class="card mb-3">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="card-header d-flex justify-content-between">',
+        'after_title'   => '</h5>',
+    ));
+
     // other widgets (200921)
     register_widget('WP_Widget_Latest_Blog');
     register_widget('WP_Widget_Sunday_Service');
     // register_widget('WP_Widget_Media_Poster');
-    register_widget('WP_Widget_Media_Lucky');
+    // register_widget('WP_Widget_Media_Lucky');
+    // register_widget('Custom_Widget_Media_Image');
 }
 
 add_action('widgets_init', 'arphabet_widgets_init');

@@ -232,8 +232,13 @@ abstract class WP_Widget_Media extends WP_Widget
 	{
 		$instance = wp_parse_args($instance, wp_list_pluck($this->get_instance_schema(), 'default'));
 
+		echo "TP#01";
+
 		// Short-circuit if no media is selected.
 		if (!$this->has_content($instance)) {
+
+			echo "Short-Circuit!!!";
+
 			return;
 		}
 
@@ -277,6 +282,7 @@ abstract class WP_Widget_Media extends WP_Widget
 	 */
 	public function update($new_instance, $instance)
 	{
+
 
 		$schema = $this->get_instance_schema();
 		foreach ($schema as $field => $field_schema) {
@@ -348,7 +354,7 @@ abstract class WP_Widget_Media extends WP_Widget
 
 		foreach ($instance as $name => $value) : ?>
 			<input type="hidden" data-property="<?php echo esc_attr($name); ?>" class="media-widget-instance-property" name="<?php echo esc_attr($this->get_field_name($name)); ?>" id="<?php echo esc_attr($this->get_field_id($name)); // Needed specifically by wpWidgets.appendTitle(). 
-																																																?>" value="<?php echo esc_attr(is_array($value) ? join(',', $value) : strval($value)); ?>" />
+																																														?>" value="<?php echo esc_attr(is_array($value) ? join(',', $value) : strval($value)); ?>" />
 		<?php
 		endforeach;
 	}
