@@ -16,7 +16,7 @@
 <body <?php body_class('bg-light'); ?>>
 	<header class="pb-4">
 		<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
-			<div class="container-xl px-0 px-md-2">
+			<div class="container-xl px-0 px-md-2" style="align-items:baseline;">
 				<span class="navbar-brand mb-0 h1"><?php bloginfo('name') ?></span>
 				<button class="navbar-toggler" type="button" data-toggle="offcanvas" data-target='#navbarNav'>
 					<span class="navbar-toggler-icon"></span>

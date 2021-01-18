@@ -20,6 +20,12 @@ body {
 	background-color: #f8f9fa !important;
 }
 
+@media screen and (min-width: 768px) {
+	.navbar-brand {
+		font-size: 1.5rem;
+	}
+}
+
 .my-banner {
 	width: 100%;
 	height: 150px;
