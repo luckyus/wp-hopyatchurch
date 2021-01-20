@@ -6,7 +6,7 @@
 
 <footer class="container-xl pb-3 px-2">
 	<div class="d-flex align-items-baseline">
-		<div>
+		<div class="my-mobile-display-none">
 			<?php bloginfo('name') ?>
 		</div>
 		<p class="ml-auto">&copy; 2021 Hop Yat Church</p>

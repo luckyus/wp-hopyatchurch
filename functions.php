@@ -20,6 +20,10 @@ function hopyatchurch_setup()
     // featured images using post thumbnails (200819)
     add_theme_support('post-thumbnails');
 
+    // Register support for Gutenberg wide images in your theme (210119)
+    // https://weblines.com.au/gutenberg-blocks-wide-alignment-full-width/#devaside (210119)
+    add_theme_support('align-wide');
+
     // menu ref: https://github.com/wp-bootstrap/wp-bootstrap-navwalker (200809)
     require_once get_template_directory() . '/class-my-navwalker.php';
     register_nav_menus(array(
