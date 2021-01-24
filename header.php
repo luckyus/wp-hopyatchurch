@@ -14,7 +14,7 @@
 </head>
 
 <body <?php body_class('bg-light'); ?>>
-	<header class="pb-4">
+	<header class="pb-3">
 		<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
 			<div class="container-xl px-0 px-md-2" style="align-items:baseline;">
 				<span class="navbar-brand mb-0 h1"><?php bloginfo('name') ?></span>

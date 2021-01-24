@@ -37,6 +37,18 @@ body {
 	}
 }
 
+/* overriding default class (kind of dangerous) (210120) */
+.wp-block-quote:not(.has-text-align-center) {
+	border-left: 0.25em solid #000;
+	margin: 0 0 1em;
+	padding-left: 1em;
+}
+@media (min-width: 782px) {
+	.wp-block-column:not(:first-child) {
+		margin-left: 1em;
+	}
+}
+
 /* allow wide-aligned and full-width content to fill outside the bounds of the containing element (210119) */
 /* https://weblines.com.au/gutenberg-blocks-wide-alignment-full-width/#devaside (210119) */
 .entry-content .alignwide {
@@ -57,34 +69,46 @@ body {
 }
 
 /* my own css */
+.my-box {
+	min-height: 20px;
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+}
+.my-border {
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+}
 @media screen and (max-width: 768px) {
 	.my-mobile-display-none {
 		display: none;
 	}
 }
-
 .my-banner {
 	width: 100%;
 	height: 150px;
 	object-fit: cover;
 }
-
 .my-feature-bg {
 	background: rgba(255, 255, 255, 0.3);
 	width: 100vw;
 	border-radius: 10px;
 }
-
 .my-feature-text {
 	font-size: 1.5rem;
 	text-shadow: 1px 1px white;
 }
-
 .my-widget-area ul {
-	list-style: none;
-	padding: 0;
+	padding-inline-start: 15px;
 }
-
+.my-widget-area ul li::marker {
+	color: #007bff;
+	font-size: 15px;
+}
 .my-post-thumbnail img {
 	float: right;
 	margin: 0 0 10px 10px;
@@ -93,60 +117,49 @@ body {
 	width: auto;
 	height: auto;
 }
-
 .my-clearboth {
 	clear: both;
 	margin-bottom: 15x;
 }
-
 .card-body {
 	padding: 1rem;
 }
-
 @media screen and (min-width: 768px) {
 	.card-body {
 		padding: 1.25rem;
 	}
 }
-
 .wpcf7-form label {
 	width: 100%;
 }
-
 @media screen and (min-width: 768px) {
 	.my-feature-bg {
 		width: 60vw;
 	}
 }
-
 .my-portrait {
 	width: 120px;
 	float: right;
 	margin-left: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 @media screen and (min-width: 768px) {
 	.my-portrait {
 		width: 150px;
 	}
 }
-
 .my-blog-text {
 	font-size: 1.1rem;
 }
-
 .my-poster > img {
 	width: 100%;
 }
-
 .my-sidebar-title {
 	padding: 0.75rem 0;
 	background-color: rgba(0, 0, 0, 0.03);
 	border-top: 1px solid rgba(0, 0, 0, 0.125);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
-
 .my-next-post-link a {
 	float: left;
 	max-width: 300px;
@@ -154,48 +167,38 @@ body {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
 .my-post-comments ol {
 	list-style-type: none;
 	padding-left: 0;
 }
-
 .my-post-comments ol.children {
 	padding-left: 58px;
 }
-
 .my-post-comments ol li img.avatar {
 	height: 48px;
 	width: 48px;
 	border-radius: 10%;
 	margin-right: 10px;
 }
-
 .my-post-comments .vcard {
 	margin-bottom: 10px;
 }
-
 .my-post-comments .my-comment-date {
 	font-size: 0.8rem;
 }
-
 .my-post-comments .comment-author {
 	display: flex;
 }
-
 .my-post-comments .bullet {
 	color: #c2c6cc;
 }
-
 .my-post-comments .comment-date {
 	font-size: 0.8rem;
 	margin-left: 5px;
 }
-
 .my-post-comments .comment-user-row {
 	padding-bottom: 8px;
 }
-
 .my-post-comments li .comment-respond {
 	padding-left: 58px;
 }

@@ -8,7 +8,7 @@
 
 $login_url = wp_login_url(get_permalink());
 $args = array(
-	'title_reply' => '<div class="py-1" style="font-size: 0.9em;">回應 / 留言</div>',
+	'title_reply' => '<h5 class="py-1">回應 / 留言</h5>',
 	'comment_field' => '
 		<div class="form-group">
 			<textarea id="comment" name="comment" class="form-control" style="height: 150px;"></textarea>

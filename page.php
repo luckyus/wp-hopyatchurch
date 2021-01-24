@@ -6,16 +6,14 @@
 
 <?php get_header() ?>
 
-<div class="container-xl text-center">
+<div class="container-xl px-0 px-md-2 text-center">
     <h3><?php the_title() ?></h3>
-    <h4>整緊整緊!</h4>
+    <?php if (have_posts()) : while (have_posts()) : the_post();
+            the_content();
+        endwhile;
+    else : ?>
+        <p><?php _e('Sorry, no pages matched your criteria'); ?></p>
+    <?php endif; ?>
 </div>
-
-<?php if (have_posts()) : while (have_posts()) : the_post();
-        the_content();
-    endwhile;
-else : ?>
-    <p><?php _e('Sorry, no pages matched your criteria'); ?></p>
-<?php endif; ?>
 
 <?php get_footer() ?>

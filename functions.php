@@ -73,6 +73,9 @@ function hopyatchurch_setup()
     require_once get_template_directory() . '/widgets/sunday-service.php';
     // require_once get_template_directory() . '/widgets/poster.php';
     // require_once get_template_directory() . '/widgets/lucky.php';
+
+    // my gutenberg blocks (210122)
+    require_once get_template_directory() . '/blocks/my-block.php';
 }
 
 add_action('after_setup_theme', 'hopyatchurch_setup');

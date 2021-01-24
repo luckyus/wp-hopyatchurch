@@ -7,7 +7,7 @@ class WP_Widget_Latest_Blog extends WP_Widget
 	{
 		$widget_ops = array(
 			'classname' => 'widget_latest_blog',
-			'description' => __("Lastest Blog by Category", "hopyatchurch"),
+			'description' => __("最新文章 by Category", "hopyatchurch"),
 		);
 		parent::__construct('latest-blog-widget', __("Category 最新文章", "hopyatchurch"), $widget_ops);
 	}
