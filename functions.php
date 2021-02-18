@@ -100,6 +100,7 @@ add_action('admin_enqueue_scripts', function () {
     wp_enqueue_style('jquery-ui', 'https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css');
     wp_enqueue_script('my-datepicker', get_template_directory_uri() . '/js/my-datepicker.js', null, null, true);
     // wp_enqueue_script('datepicker-zh-TW', get_template_directory_uri() . '/js/datepicker-zh-TW.js', null, null, true);
+    wp_enqueue_style('custom-admin', get_template_directory_uri() . '/style-admin.css');
 });
 
 // new_excerpt_text() (xxxxxx)

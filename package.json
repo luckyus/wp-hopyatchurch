@@ -1,0 +1,27 @@
+{
+	"name": "hopyatchurch",
+	"version": "1.0.0",
+	"description": "wordpress theme for hop yat church",
+	"main": "index.js",
+	"directories": {
+		"lib": "lib"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build:scripts": "wp-scripts build",
+		"build:start": "wp-scripts start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/luckyus/wp-hopyatchurch.git"
+	},
+	"author": "brian leung",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/luckyus/wp-hopyatchurch/issues"
+	},
+	"homepage": "https://github.com/luckyus/wp-hopyatchurch#readme",
+	"devDependencies": {
+		"@wordpress/scripts": "13.0.0"
+	}
+}
