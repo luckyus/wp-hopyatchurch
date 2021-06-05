@@ -11,6 +11,7 @@ const blockStyle = {
 	padding: "20px",
 };
 
+// format: 'namespace/block-slug'
 registerBlockType("klnc/my-card", {
 	// built-in attributes
 	title: "My Card",
